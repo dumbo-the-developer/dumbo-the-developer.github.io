@@ -83,6 +83,13 @@ const filterFunc = function (selectedValue) {
     } else {
       filterItems[i].classList.remove("active");
     }
+    if (selectedValue === "skyblock") {
+      filterItems[i].classList.add("skyblock");
+    } else if (selectedValue === filterItems[i].dataset.category) {
+      filterItems[i].classList.add("active");
+    } else {
+      filterItems[i].classList.remove("active");
+    }
   }
 };
 
