@@ -67,14 +67,17 @@ for (let i = 0; i < selectItems.length; i++) {
     let selectedValue = this.innerText.toLowerCase();
     selectValue.innerText = this.innerText;
     elementToggleFunc(select);
-    filterFunc(selectedValue);
+    filterFuncAll(selectedValue);
+    filterFuncSkyblock(selectedValue);
+    filterFuncLifesteal(selectedValue);
+    filterFuncOneblock(selectedValue);
   });
 }
 
 // filter variables
 const filterItems = document.querySelectorAll("[data-filter-item]");
 
-const filterFunc = function (selectedValue) {
+const filterFuncAll = function (selectedValue) {
   for (let i = 0; i < filterItems.length; i++) {
     if (selectedValue === "all") {
       filterItems[i].classList.add("active");
@@ -82,6 +85,39 @@ const filterFunc = function (selectedValue) {
       filterItems[i].classList.add("active");
     } else {
       filterItems[i].classList.remove("active");
+    }
+  }
+};
+const filterFuncSkyblock = function (selectedValue) {
+  for (let i = 0; i < filterItems.length; i++) {
+    if (selectedValue === "skyblock") {
+      filterItems[i].classList.add("skyblock");
+    } else if (selectedValue === filterItems[i].dataset.category) {
+      filterItems[i].classList.add("skyblock");
+    } else {
+      filterItems[i].classList.remove("skublock");
+    }
+  }
+};
+const filterFuncLifesteal = function (selectedValue) {
+  for (let i = 0; i < filterItems.length; i++) {
+    if (selectedValue === "lifesteal / smp") {
+      filterItems[i].classList.add("lifesteal");
+    } else if (selectedValue === filterItems[i].dataset.category) {
+      filterItems[i].classList.add("lifesteal");
+    } else {
+      filterItems[i].classList.remove("lifesteal");
+    }
+  }
+};
+const filterFuncOneblock = function (selectedValue) {
+  for (let i = 0; i < filterItems.length; i++) {
+    if (selectedValue === "oneblock") {
+      filterItems[i].classList.add("oneblock");
+    } else if (selectedValue === filterItems[i].dataset.category) {
+      filterItems[i].classList.add("oneblock");
+    } else {
+      filterItems[i].classList.remove("oneblock");
     }
   }
 };
@@ -93,7 +129,10 @@ for (let i = 0; i < filterBtn.length; i++) {
   filterBtn[i].addEventListener("click", function () {
     let selectedValue = this.innerText.toLowerCase();
     selectValue.innerText = this.innerText;
-    filterFunc(selectedValue);
+    filterFuncAll(selectedValue);
+    filterFuncSkyblock(selectedValue);
+    filterFuncLifesteal(selectedValue);
+    filterFuncOneblock(selectedValue);
 
     lastClickedBtn.classList.remove("active");
     this.classList.add("active");
