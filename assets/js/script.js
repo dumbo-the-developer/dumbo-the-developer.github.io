@@ -71,6 +71,7 @@ for (let i = 0; i < selectItems.length; i++) {
     filterFuncSkyblock(selectedValue);
     filterFuncLifesteal(selectedValue);
     filterFuncOneblock(selectedValue);
+    filterFuncSurvival(selectedValue);
   });
 }
 
@@ -121,6 +122,17 @@ const filterFuncOneblock = function (selectedValue) {
     }
   }
 };
+const filterFuncSurvival = function (selectedValue) {
+  for (let i = 0; i < filterItems.length; i++) {
+    if (selectedValue === "survival") {
+      filterItems[i].classList.add("survival");
+    } else if (selectedValue === filterItems[i].dataset.category) {
+      filterItems[i].classList.add("survival");
+    } else {
+      filterItems[i].classList.remove("survival");
+    }
+  }
+};
 
 // add event in all filter button items for large screen
 let lastClickedBtn = filterBtn[0];
@@ -133,6 +145,7 @@ for (let i = 0; i < filterBtn.length; i++) {
     filterFuncSkyblock(selectedValue);
     filterFuncLifesteal(selectedValue);
     filterFuncOneblock(selectedValue);
+    filterFuncSurvival(selectedValue);
 
     lastClickedBtn.classList.remove("active");
     this.classList.add("active");
